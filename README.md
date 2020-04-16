@@ -11,7 +11,7 @@ The input file for this script is a SAS dataset (.sasb7bdat) containing lab name
 
 ADDITIONAL INFORMATION
 ----------------------
-An additional xlsx file is provided to assign additional information when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The script also creates a .pkl file in the directory to track distinct records in a pandas dataframe, so that review of new distinct records is easier and faster. 
+An additional xlsx file is provided to assign additional information when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The script also uses a .pkl file in the directory to track distinct records in a pandas dataframe, so that review of new distinct records is easier and faster. 
 
 LICENSE
 -------
