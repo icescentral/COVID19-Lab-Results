@@ -3,7 +3,7 @@
 
 BACKGROUND
 ----------
-This program was created at ICES (Institute of Clinical Evaluative Sciences), an Ontario-based not-for-profit health institute, for the purpose of parsing lab results pertaining to SARS-CoV-2 (causes COVID-19) and other respiratory viruses. We used Jupyter Notebook and designed the algorithm based on laboratory text data from OLIS (Ontario Laboratories Information System), but respiratory virus test results are likely to be reported in a similar fashion elsewhere. Our goal is to create an efficient method to accurately interpret large amounts of incoming COVID-19 data so that it can be used for research purposes as quickly as possible. 
+This program was created at ICES (Institute for Clinical Evaluative Sciences), an Ontario-based not-for-profit health institute, for the purpose of parsing lab results pertaining to SARS-CoV-2 (causes COVID-19) and other respiratory viruses. We used Jupyter Notebook and designed the algorithm based on laboratory text data from OLIS (Ontario Laboratories Information System), but respiratory virus test results are likely to be reported in a similar fashion elsewhere. Our goal is to create an efficient method to accurately interpret large amounts of incoming COVID-19 data so that it can be used for research purposes as quickly as possible. 
 
 USAGE
 -----
