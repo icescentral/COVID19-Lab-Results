@@ -9,11 +9,13 @@ USAGE
 -----
 This script first cleans the text using some string manipulation and regular expressions, then employs tokenization to split the strings into smaller units (tokens). These tokens are labelled using a dictionary-based approach, in order to act as inputs to our in-house algorithm, which ultimately outputs an interpretation of the COVID-19 lab results.
 
-The input file for this script is a SAS dataset (.sasb7bdat) containing lab names, test request codes, observation codes (LOINC), and test result texts. The output file of this script is a csv with test results (Positive [P]/Presumptive-positive [S]/Negative [N]/Indeterminate [I]/Pending [D]/Cancelled [C]/Rejected [R]) in multiple columns (one for each virus), and in the same order as the input dataset. Note that we differentiate between COVID-19 and seasonal coronaviruses. Please consider doing manual review of the results to ensure that results are accurate. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
+The input file for this script is a SAS dataset (.sasb7bdat) containing lab names, test request codes, observation codes (LOINC), and test result texts. The output file of this script is a csv with test results (Positive [P]/Presumptive-positive [S]/Negative [N]/Indeterminate [I]/Pending [D]/Cancelled [C]/Rejected [R]) in multiple columns (one for each virus), and in the same order as the input dataset. 
+
+Note that we differentiate between COVID-19 and seasonal coronaviruses. Please consider doing manual review of the results to ensure that results are accurate. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
 
 ADDITIONAL INFORMATION
 ----------------------
-An additional xlsx file is provided to assign additional information when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The script also uses a .pkl file in the directory to track distinct records in a pandas dataframe, so that review of new distinct records is easier and faster. 
+An additional xlsx file is provided to assign additional information when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The script also creates a .pkl file in the directory to track distinct records in a pandas dataframe, so that review of new distinct records is easier and faster. 
 
 LICENSE
 -------
