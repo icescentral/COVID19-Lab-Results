@@ -36,7 +36,7 @@ Initial result [virus, result, test, final?]:
 ['v_covid', 'r_pos', 't_pcr', False], ['v_covid', 'r_pos', 't_pcr', True]]
 
 Final result:
-Covid = ‘P’
+covid = ‘P’
 
 Interpretation (at the test result level):
 Tested positive for COVID-19.
