@@ -71,7 +71,7 @@ Distributed under the GNU Affero General Public License v3.0. See LICENSE for mo
 
 CONTACT
 -------
-Please email Branson Chen [branson.chen@ices.on.ca] @BranCh7 for any specific questions about the code and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
+Please email Branson Chen [branson.chen@ices.on.ca] for any specific questions about the code and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
 
 ACKNOWLEDGEMENTS
 ----------------
