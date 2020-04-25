@@ -21,7 +21,7 @@ An additional xlsx file is provided to assign additional information when there 
 
 EXAMPLES (TEXT CLEANING)
 ------------------------
-Example 1:
+**Example 1**:
 
 Input string:
 COVID-19 Virus Detection:\.br\COVID-19 virus RdRp gene:           Not detected\.br\COVID-19 virus Envelope gene:       Not detected\.br\COVID-19 virus Nucleocapsid gene:   Detected\.br\Interpretation:\.br\[COVID-19] virus DETECTED by real-time PCR based on …
@@ -41,7 +41,7 @@ covid = ‘P’
 Interpretation (at the test result level):
 Tested positive for COVID-19.
 
-Example 2:
+**Example 2**:
 
 Input string:
 \.br\SPECIMEN DESCRIPTION: NASOPHARYNGEAL SWAB\.br\ADDITIONAL INFO.: NONE\.br\PCR TEST: NO VIRUS DETECTED\.br\(note)\.br\This specimen was tested for Influenza A,\.br\Influenza B, Respiratory Syncytial Virus\.br\(RSV), Adenovirus, Human metapneumovirus,\.br\Parainfluenza virus type 1, Parainfluenza\.br\virus type 3, Rhinovirus/Enterovirus and\.br\COVID-19 virus by real time RT-PCR.\.br\A negative result does not preclude the\.br\presence of the above viruses …
@@ -71,7 +71,7 @@ Distributed under the GNU Affero General Public License v3.0. See LICENSE for mo
 
 CONTACT
 -------
-Please email Branson Chen [branson.chen@ices.on.ca] for any specific questions about the code and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
+Please email Branson Chen [branson.chen@ices.on.ca] @BranCh7 for any specific questions about the code and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
 
 ACKNOWLEDGEMENTS
 ----------------
