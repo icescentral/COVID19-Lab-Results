@@ -24,19 +24,20 @@ EXAMPLES (TEXT CLEANING)
 **Example 1**:
 
 Input string:
-COVID-19 Virus Detection:\.br\COVID-19 virus RdRp gene:           Not detected\.br\COVID-19 virus Envelope gene:       Not detected\.br\COVID-19 virus Nucleocapsid gene:   Detected\.br\Interpretation:\.br\[COVID-19] virus DETECTED by real-time PCR based on …
+`COVID-19 Virus Detection:\.br\COVID-19 virus RdRp gene:           Not detected\.br\COVID-19 virus Envelope gene:       Not detected\.br\COVID-19 virus Nucleocapsid gene:   Detected\.br\Interpretation:\.br\[COVID-19] virus DETECTED by real-time PCR based on …`
 
 Cleaned string:
-covid 19 virus detection covid 19 virus rdrp gene not detected covid 19 virus envelope gene not detected covid 19 virus nucleocapsid gene detected interpretation covid 19 virus detected by real time pcr based on …
+`covid 19 virus detection covid 19 virus rdrp gene not detected covid 19 virus envelope gene not detected covid 19 virus nucleocapsid gene detected interpretation covid 19 virus detected by real time pcr based on …`
 
 Tokens with labels:
-['v_covid', 'connecting', 'v_unk', None, 'v_covid', 'connecting', 'v_unk', None, 't_pcr', 'r_neg', 'r_pos', 'v_covid', 'connecting', 'v_unk', 'v_covid', 'v_covid', 'r_neg', 'r_pos', 'v_covid', 'connecting', 'v_unk', 'v_covid', 'v_covid', 'r_pos', 'final', 'v_covid', 'connecting', 'v_unk', 'r_pos', 'v_unk', 'connecting', None, 't_pcr', None, None]
+`['v_covid', 'connecting', 'v_unk', None, 'v_covid', 'connecting', 'v_unk', None, 't_pcr', 'r_neg', 'r_pos', 'v_covid', 'connecting', 'v_unk', 'v_covid', 'v_covid', 'r_neg', 'r_pos', 'v_covid', 'connecting', 'v_unk', 'v_covid', 'v_covid', 'r_pos', 'final', 'v_covid', 'connecting', 'v_unk', 'r_pos', 'v_unk', 'connecting', None, 't_pcr', None, None]`
+
 Initial result [virus, result, test, final?]:
-[['v_covid', 'r_neg', 't_pcr', False], ['v_covid', 'r_neg', 't_pcr', False], 
-['v_covid', 'r_pos', 't_pcr', False], ['v_covid', 'r_pos', 't_pcr', True]]
+`[['v_covid', 'r_neg', 't_pcr', False], ['v_covid', 'r_neg', 't_pcr', False], 
+['v_covid', 'r_pos', 't_pcr', False], ['v_covid', 'r_pos', 't_pcr', True]]`
 
 Final result:
-covid = ‘P’
+`covid = ‘P’`
 
 Interpretation (at the test result level):
 Tested positive for COVID-19.
@@ -44,23 +45,23 @@ Tested positive for COVID-19.
 **Example 2**:
 
 Input string:
-\.br\SPECIMEN DESCRIPTION: NASOPHARYNGEAL SWAB\.br\ADDITIONAL INFO.: NONE\.br\PCR TEST: NO VIRUS DETECTED\.br\(note)\.br\This specimen was tested for Influenza A,\.br\Influenza B, Respiratory Syncytial Virus\.br\(RSV), Adenovirus, Human metapneumovirus,\.br\Parainfluenza virus type 1, Parainfluenza\.br\virus type 3, Rhinovirus/Enterovirus and\.br\COVID-19 virus by real time RT-PCR.\.br\A negative result does not preclude the\.br\presence of the above viruses …
+`\.br\SPECIMEN DESCRIPTION: NASOPHARYNGEAL SWAB\.br\ADDITIONAL INFO.: NONE\.br\PCR TEST: NO VIRUS DETECTED\.br\(note)\.br\This specimen was tested for Influenza A,\.br\Influenza B, Respiratory Syncytial Virus\.br\(RSV), Adenovirus, Human metapneumovirus,\.br\Parainfluenza virus type 1, Parainfluenza\.br\virus type 3, Rhinovirus/Enterovirus and\.br\COVID-19 virus by real time RT-PCR.\.br\A negative result does not preclude the\.br\presence of the above viruses …`
 
 Cleaned string:
-specimen description nasopharyngeal swab additional info none pcr test no virus detected note this specimen was tested for influenza a influenza b respiratory syncytial virus rsv adenovirus human metapneumovirus parainfluenza virus type 1 parainfluenza virus type 3 rhinovirus enterovirus and covid 19 virus by real time rt pcr a negative result does not preclude the presence of the above viruses …
+`specimen description nasopharyngeal swab additional info none pcr test no virus detected note this specimen was tested for influenza a influenza b respiratory syncytial virus rsv adenovirus human metapneumovirus parainfluenza virus type 1 parainfluenza virus type 3 rhinovirus enterovirus and covid 19 virus by real time rt pcr a negative result does not preclude the presence of the above viruses …`
 
 Tokens with labels:
-['v_unk', None, None, None, None, None, None, 't_pcr', 'connecting', 'r_neg', 'v_unk', 'r_pos', 'stop', None, 'v_unk', None, None, 'connecting', 'v_flu_a', 'v_flu_a', 'v_flu_b', 'v_flu_b', 'v_rsv', 'v_rsv', 'v_rsv', 'v_rsv', 'v_adenovirus', None, 'v_hmv', 'v_para_1', 'v_para_1', 'v_para_1', 'v_para_1', 'v_para_3', 'v_para_3', 'v_para_3', 'v_para_3', 'v_entero_rhino', 'v_entero_rhino', None, 'v_covid', 'connecting', 'v_unk', 'v_unk', 'connecting', None, None, 't_pcr', 'connecting', 'r_neg', 'connecting', 'skip', 'skip', 'stop', None, 'connecting', 'connecting', None, None, 'v_unk']
+`['v_unk', None, None, None, None, None, None, 't_pcr', 'connecting', 'r_neg', 'v_unk', 'r_pos', 'stop', None, 'v_unk', None, None, 'connecting', 'v_flu_a', 'v_flu_a', 'v_flu_b', 'v_flu_b', 'v_rsv', 'v_rsv', 'v_rsv', 'v_rsv', 'v_adenovirus', None, 'v_hmv', 'v_para_1', 'v_para_1', 'v_para_1', 'v_para_1', 'v_para_3', 'v_para_3', 'v_para_3', 'v_para_3', 'v_entero_rhino', 'v_entero_rhino', None, 'v_covid', 'connecting', 'v_unk', 'v_unk', 'connecting', None, None, 't_pcr', 'connecting', 'r_neg', 'connecting', 'skip', 'skip', 'stop', None, 'connecting', 'connecting', None, None, 'v_unk']`
 
 Initial result [virus, result, test, final?]:
-[['v_unk', 'r_neg', 't_pcr', False], ['v_flu_a', 'r_neg', 't_pcr', False], 
+`[['v_unk', 'r_neg', 't_pcr', False], ['v_flu_a', 'r_neg', 't_pcr', False], 
 ['v_flu_b', 'r_neg', 't_pcr', False], ['v_rsv', 'r_neg', 't_pcr', False], 
 ['v_adenovirus', 'r_neg', 't_pcr', False], ['v_hmv', 'r_neg', 't_pcr', False], 
 ['v_para_1', 'r_neg', 't_pcr', False], ['v_para_3', 'r_neg', 't_pcr', False], 
-['v_entero_rhino', 'r_neg', 't_pcr', False], ['v_covid', 'r_neg', 't_pcr', False]]
+['v_entero_rhino', 'r_neg', 't_pcr', False], ['v_covid', 'r_neg', 't_pcr', False]]`
 
 Final result:
-covid = 'N', adenovirus = ‘N’, flu = ‘N’, flu_a = ‘N’, flu_b = ‘N’, entero_rhino = ‘N’, hmv = ‘N’, para = ‘N’, rsv = ‘N’
+`covid = 'N', adenovirus = ‘N’, flu = ‘N’, flu_a = ‘N’, flu_b = ‘N’, entero_rhino = ‘N’, hmv = ‘N’, para = ‘N’, rsv = ‘N’`
 
 Interpretation (at the test result level):
 Tested for COVID-19, adenovirus, influenza, entero/rhinovirus, human metapneumovirus, parainfluenza, and respiratory syncytial virus, and negative for all viruses tested for.
