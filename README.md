@@ -3,21 +3,21 @@
 
 BACKGROUND
 ----------
-This program was created at ICES (Institute for Clinical Evaluative Sciences), an Ontario-based not-for-profit health institute, for the purpose of parsing lab results pertaining to SARS-CoV-2 (causes COVID-19) and other respiratory viruses. We used Jupyter Notebook and designed the algorithm based on laboratory text data from OLIS (Ontario Laboratories Information System), but respiratory virus test results are likely to be reported in a similar fashion elsewhere. Our goal is to create an efficient method to accurately interpret large amounts of incoming COVID-19 data so that it can be used for research purposes as quickly as possible. 
+This program was created at ICES (Institute for Clinical Evaluative Sciences), an Ontario-based not-for-profit health institute, for the purpose of parsing lab results pertaining to SARS-CoV-2 (causes COVID-19) and other respiratory viruses. We used Jupyter Notebook (including Python libraries: pandas, numpy,  nltk,  re) and designed the algorithm based on laboratory text data from OLIS (Ontario Laboratories Information System), but respiratory virus test results are likely to be reported in a similar fashion elsewhere. Our goal is to create an efficient method to accurately interpret large amounts of incoming COVID-19 data so that it can be used for research purposes as quickly as possible. 
 
 USAGE
 -----
-This script first cleans the text using some string manipulation and regular expressions, then employs tokenization to split the strings into smaller units (tokens). These tokens are labelled using a dictionary-based approach, in order to act as inputs to our in-house algorithm, which ultimately outputs an interpretation of the COVID-19 lab results.
+The Jupyter Notebook script first cleans the text using some string manipulation and regular expressions, then employs tokenization to split the strings into smaller units (tokens). These tokens are labelled using a dictionary-based approach, in order to act as inputs to our in-house algorithm, which ultimately outputs an interpretation of the COVID-19 lab results.
 
-The input file for this script is a SAS dataset (.sasb7bdat) containing order IDs, lab names, test request codes, observation codes (LOINC), test result release times, test result statuses, and test result free-text. The output file of this script is a csv with the input columns alongside an exclude_flag variable (whether the test result was withdrawn) and interpreted results (Positive [P]/Presumptive-positive [S]/Negative [N]/Indeterminate [I]/Pending [D]/Rejected [R]/Cancelled [C]) in multiple columns (one for each virus).
+The input file for this script is a SAS dataset (.sasb7bdat) containing order IDs, lab names, test request codes, observation codes (LOINC), test result release times, test result statuses, and test result free-text. The output file of this script is a csv with an exclude_flag variable (denoting whether the test result was withdrawn) and interpreted results (Positive [P]/Presumptive-positive [S]/Negative [N]/Indeterminate [I]/Pending [D]/Rejected [R]/Cancelled [C]) in multiple columns (one for each virus). There is an additional parameter, output_flag, in the "Input variables" section that can add on the original input columns or the key columns to the output file.
 
 Note that we differentiate between COVID-19 (**covid** variable) and seasonal coronaviruses (**coronavirus** variable). Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
 
-Our analysis is applied at the TEST RESULT level, and each observation that is part of the test result will have the same output. Before any downstream analysis, the output csv of the python script should be "rolled up" into more clinically relevant units of analysis (e.g., test request, lab report, testing episode). We will post a SAS script here shortly that will output results at a "testing episode" level.
+Our analysis is applied at the TEST RESULT level, and each observation that is part of the test result will have the same output. Before any downstream analysis, the output file of the Python script should be "rolled up" into more clinically relevant units of analysis (e.g., test request --> lab report --> testing episode). We will be posting a SAS script here shortly that will output results at a "testing episode" level, which is distinct by patientid and observationdate (i.e., specimen collection date).
 
 ADDITIONAL INFORMATION
 ----------------------
-An additional xlsx file is provided to assign additional information when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The script also creates a .pkl file in the directory to track distinct records in a pandas dataframe, so that review of new distinct records is easier and faster. 
+An additional xlsx file is provided to assign additional information in the first script when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The Jupyter Notebook also creates a .pkl file in the directory to track unique records in a pandas dataframe, so that review of new unique records is easier and faster.
 
 EXAMPLES (TEXT CLEANING)
 ------------------------
@@ -72,7 +72,7 @@ Distributed under the GNU Affero General Public License v3.0. See LICENSE for mo
 
 CONTACT
 -------
-Please email Branson Chen [branson.chen@ices.on.ca] for any specific questions about the code and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
+Please email Branson Chen [branson.chen@ices.on.ca] for any questions about the Python script, Kinwah Fung [kinwah.fung@ices.on.ca] and Hannah Chung [hannah.chung@ices.on.ca] for any questions about the SAS script, and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
 
 ACKNOWLEDGEMENTS
 ----------------
