@@ -3,7 +3,7 @@
 BACKGROUND
 ----------
 
-These set of scripts were created at ICES (Institute for Clinical Evaluative Sciences), an Ontario-based not-for-profit health institute, for the purpose of **1)** parsing lab results pertaining to SARS-CoV-2 (causes COVID-19) and other respiratory viruses and **2)** rolling up the lab results into more clinically relevant "testing episodes". We used Jupyter Notebook (including Python libraries: pandas, numpy,  nltk,  re) and designed the algorithms based on laboratory data from OLIS (Ontario Laboratories Information System), but respiratory virus test results are likely to be reported in a similar fashion elsewhere. Our goal is to create an efficient method to accurately interpret large amounts of incoming COVID-19 data so that it can be used for research purposes as quickly as possible. 
+This set of scripts were created at ICES (Institute for Clinical Evaluative Sciences), an Ontario-based not-for-profit health institute, for the purpose of: **1)** parsing lab results pertaining to SARS-CoV-2 (causes COVID-19) and other respiratory viruses and **2)** rolling up the lab results into more clinically relevant "testing episodes". We used Jupyter Notebook (including Python libraries: pandas, numpy,  nltk,  re) and designed the algorithms based on laboratory data from OLIS (Ontario Laboratories Information System), but respiratory virus test results are likely to be reported in a similar fashion elsewhere. Our goal is to create an efficient method to accurately interpret large amounts of incoming COVID-19 data so that it can be used for research purposes as quickly as possible. 
 
 USAGE
 -----
@@ -14,19 +14,17 @@ The COVID19_processing.ipynb script first cleans the text using some string mani
 
 The input file for this script is a SAS dataset (.sasb7bdat) containing patient IDs, order IDs, lab names, test request codes, observation codes (LOINC), test result release times, test result statuses, and test result free-text. The output file of this script is a CSV file (.csv) with an exclude_flag variable (denoting whether the test result was withdrawn) and interpreted results (Positive [P]/Presumptive-positive [S]/Negative [N]/Indeterminate [I]/Pending [D]/Rejected [R]/Cancelled [C]) in multiple columns (one for each virus). There is an additional parameter, output_flag, in the "Input variables" section that can add on the original input columns or the key columns to the output file.
 
+An additional Excel file (.xlsx) is provided to assign additional information in the first script when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The Jupyter Notebook also creates a Python pickle file (.pkl) in the directory to track unique records in a pandas dataframe, so that review of new unique records is easier and faster.
+
 Note that we differentiate between COVID-19 (**covid** variable) and seasonal coronaviruses (**coronavirus** variable). Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
 
 Our analysis is applied at the TEST RESULT level, and each observation that is part of the test result will have the same virus interpretations. Before any downstream analysis, the output file of the Python script should be "rolled up" into more clinically relevant units of analysis (e.g., test request --> lab report --> testing episode).
-
-An additional xlsx file is provided to assign additional information in the first script when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The Jupyter Notebook also creates a .pkl file in the directory to track unique records in a pandas dataframe, so that review of new unique records is easier and faster.
 
 ### COVID19_rollup ###
 
 The COVID19_rollup.ipynb script rolls up interpretations from test results all the way up to "testing episodes", which we define as each unique combination of patientid and observationdate (i.e., specimen collection date). We created different hierarchies so that the most relevant COVID-related test results would take priority in the roll-up. Please see the **Overview** section of this script for a more thorough description.
 
-The input file for this script is a CSV file (.csv) that contains COVID-19 interpretation flags along with multiple key columns (generated from previous script; please specify output_flag = 1 or 2). The output file of this script is a CSV file (.csv) that contains a COVID-19 result for each testing episode. There is additional information included, like all of the IDs of lab orders associated with the testing episode, observation release date, and a COVID test flag. 
-
-Please see the **Data definitions** section of the script for more details on the output variables.
+The input file for this script is a CSV file (.csv) that contains COVID-19 interpretation flags along with multiple key columns (generated from previous script; please specify output_flag = 1 or 2). The output file of this script is a CSV file (.csv) that contains a COVID-19 result for each testing episode. There is additional information included, like all of the IDs of lab orders associated with the testing episode, observation release date, and a COVID test flag. Please see the **Data definitions** section of the script for more details on the output variables.
 
 EXAMPLES (TEXT CLEANING)
 ------------------------
