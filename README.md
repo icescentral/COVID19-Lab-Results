@@ -18,7 +18,7 @@ An additional Excel file (.xlsx) is provided to assign additional information in
 
 Note that we differentiate between COVID-19 (**covid** variable) and seasonal coronaviruses (**coronavirus** variable). Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
 
-Our analysis is applied at the TEST RESULT level, and each observation that is part of the test result will have the same virus interpretations. Before any downstream analysis, the output file of the Python script should be "rolled up" into more clinically relevant units of analysis (e.g., test request --> lab report --> testing episode).
+Our analysis is applied at the TEST RESULT level, and each observation that is part of the test result will have the same virus interpretations. Before any downstream analysis, the output file of the Python script should be "rolled up" into more clinically relevant units of analysis (e.g., test result --> test request --> lab report --> testing episode).
 
 ### COVID19_rollup ###
 
