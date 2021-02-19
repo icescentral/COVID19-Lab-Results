@@ -43,7 +43,7 @@ This script also uses the Excel file (COVID19_VOC_codes_YYYYMMDD.xls) to assign 
 
 The second part of this script rolls up interpretations up to "testing episodes", which we define as each unique combination of patientid and observationdate (i.e., specimen collection date). At present, the script assigns a result for the episode for each test type based on the hierarchy P>I>N>D>C>R.  Please see more details in the **Overview** section. 
 
-The final output file of the script is a CSV file (.csv) that contains sequencing and screening result for each testing episode. There is additional information included, like a test completed flag for each test type. Please note that the file structure can change significantly and frequently due to changes in the screening/sequencing processes and reporting as new COVID-19 variants arise and public health priorities change.
+The final output file of the script is a CSV file (.csv) that contains sequencing and screening result for each testing episode. There is additional information included, like a test completed flag for each test type. Please note that the file structure can change significantly and frequently due to changes in the screening/sequencing processes and reporting as new COVID-19 variants arise and public health priorities shift.
 
 EXAMPLES (TEXT CLEANING)
 ------------------------
