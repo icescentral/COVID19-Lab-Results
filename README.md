@@ -14,7 +14,7 @@ The COVID19_processing.ipynb script first cleans the text using some string mani
 
 The input file for this script is a SAS dataset (.sasb7bdat) containing patient IDs, order IDs, lab names, test request codes, observation codes (LOINC), test result release times, test result statuses, and test result free-text. The output file of this script is a CSV file (.csv) with an exclude_flag variable (denoting whether the test result was withdrawn) and interpreted results ([P] Positive/[S] preSumptive-positive/[I] Indeterminate/[N] Negative/[D] penDing/[C] Cancelled/[R] Rejected) in multiple columns (one for each virus). There is an additional parameter, output_flag, in the **Input variables** section that can add on the original input columns or the key columns to the output file.
 
-An additional Excel file (.xlsx) is provided to assign additional information in the first script when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The Jupyter Notebook also creates a Python pickle file (.pkl) in the directory to track unique records in a pandas dataframe, so that review of new unique records is easier and faster.
+An Excel file (COVID19_Resp_codes_YYYYMMDD.xls) is provided to assign additional information in the first script when there is an unidentified virus or test type in the text. This file can be updated as new LOINCs and test request codes are used. The Jupyter Notebook also creates a Python pickle file (.pkl) in the directory to track unique records in a pandas dataframe, so that manual review of new unique records is easier and faster.
 
 Note that we differentiate between COVID-19 (**covid** variable) and seasonal coronaviruses (**coronavirus** variable). Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
 
@@ -25,6 +25,25 @@ Our analysis is applied at the TEST RESULT level, and each observation that is p
 The COVID19_rollup.ipynb script rolls up interpretations from test results all the way up to "testing episodes", which we define as each unique combination of patientid and observationdate (i.e., specimen collection date). We created different hierarchies so that the most relevant COVID-related test results would take priority in the roll-up. Please see the **Overview** section of this script for a more thorough description.
 
 The input file for this script is a CSV file (.csv) that contains COVID-19 interpretation flags along with multiple key columns (generated from previous script; please specify output_flag = 1 or 2). The output file of this script is a CSV file (.csv) that contains a COVID-19 result for each testing episode. There is additional information included, like all of the IDs of lab orders associated with the testing episode, observation release date, and a COVID test flag. Please see the **Data definitions** section of the script for more details on the output variables.
+
+### COVID19_voc_processing ###
+
+The COVID19_voc_processing.ipynb script specifically processes results pertaining to COVID 19 Variants of Concern (VOCs). The processing and rollup, similar to the two COVID 19 scripts above, is done within one script. DISCLAIMER: This script is still a work in progress in preliminary stages and is still undergoing validation and checks. 
+
+The input file for this script is a subset of the SAS dataset used in the COVID 19 processing script. The dataset is subset by including records that fall under test request (TR) codes TR12952-8 (VOC screening) and TR12953-6 (VOC sequencing), as well as any records that contain words relating to VOCs (see script for more details). 
+
+An intermediate output file of this script is a CSV file (.csv) with an exclude_flag variable (denoting whether the test result was withdrawn) and interpreted results ([P] Positive/[S] preSumptive-positive/[I] Indeterminate/[N] Negative/[D] penDing/[C] Cancelled/[R] Rejected) in multiple columns:
+-	scr_voc: overall screening result, positive if at least one positive mutation result
+-	scr_sgene_n501y: screening result of n501y s gene mutation
+-	seq_sgene_n501y/k417n/e484k: sequencing result for mutations
+-	seq_voc: overall sequencing result, positive if at least one positive VOC result
+-	seq_voc_b117/b1351/p1/p2: sequencing result for identified VOCs
+
+This script also uses the Excel file (COVID19_VOC_codes_YYYYMMDD.xls) to assign additional information in case of unidentified virus or test types. Likewise, a .pkl file is also created to track and review new records. Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
+
+The second part of this script rolls up interpretations up to "testing episodes", which we define as each unique combination of patientid and observationdate (i.e., specimen collection date). At present, the script assigns a result for the episode for each test type based on the hierarchy P>I>N>D>C>R.  Please see more details in the **Overview** section. 
+
+The final output file of the script is a CSV file (.csv) that contains sequencing and screening result for each testing episode. There is additional information included, like a test completed flag for each test type. Please note that the file structure can change significantly and frequently due to changes in the screening/sequencing processes and reporting as new COVID-19 variants arise and public health priorities change.
 
 EXAMPLES (TEXT CLEANING)
 ------------------------
@@ -82,7 +101,7 @@ Distributed under the GNU Affero General Public License v3.0. See LICENSE for mo
 CONTACT
 -------
 
-Please email Branson Chen [branson.chen@ices.on.ca] for any questions about the COVID19_processing script, Kinwah Fung [kinwah.fung@ices.on.ca] and Hannah Chung [hannah.chung@ices.on.ca] for any questions about the COVID19_rollup script, and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
+Please email Branson Chen [branson.chen@ices.on.ca] for any questions about the COVID19_processing script, Kinwah Fung [kinwah.fung@ices.on.ca] and Hannah Chung [hannah.chung@ices.on.ca] for any questions about the COVID19_rollup script, Sina Brar [sina.brar@ices.on.ca] for any questions about the COVID19_voc_processing script, and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
 
 ACKNOWLEDGEMENTS
 ----------------
