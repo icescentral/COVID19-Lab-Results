@@ -39,11 +39,13 @@ An intermediate output file of this script is a CSV file (.csv) with an exclude_
 -	seq_voc: overall sequencing result, positive if at least one positive VOC result
 -	seq_voc_b117/b1351/p1/p2: sequencing result for identified VOCs
 
-This script also uses the Excel file (COVID19_VOC_codes_YYYYMMDD.xls) to assign additional information in case of unidentified virus or test types. Likewise, a .pkl file is also created to track and review new records. Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
+Having a mutation detected by sequencing or screening does not necessarily mean that a VOC is identified; the only definitive VOC identification is from sequencing and will be reported in the variables that start with seq_voc. Furthermore, results can mention a detection of VOC by sequencing but not contain the specific VOC identified (e.g., information systems are not set up to handle reporting of newly identified VOCs). Note that the file structure can change significantly and frequently due to changes in the screening/sequencing processes and reporting as new COVID-19 variants arise and public health priorities shift. Please interpret these results with caution and a good understanding of VOCs.
+
+This script also uses the Excel file (COVID19_VOC_codes_YYYYMMDD.xls) to assign additional information in case of unidentified virus or test types. Similar to the previous script, a .pkl file is also created to track and review new records. Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
 
 The second part of this script rolls up interpretations up to "testing episodes", which we define as each unique combination of patientid and observationdate (i.e., specimen collection date). At present, the script assigns a result for the episode for each test type based on the hierarchy P>I>N>D>C>R.  Please see more details in the **Overview** section. 
 
-The final output file of the script is a CSV file (.csv) that contains sequencing and screening result for each testing episode. There is additional information included, like a test completed flag for each test type. Please note that the file structure can change significantly and frequently due to changes in the screening/sequencing processes and reporting as new COVID-19 variants arise and public health priorities shift.
+The final output file of the script is a CSV file (.csv) that contains sequencing and screening result for each testing episode. There is additional information included, like a test completed flag for each test type. 
 
 EXAMPLES (TEXT CLEANING)
 ------------------------
