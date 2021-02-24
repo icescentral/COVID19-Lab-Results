@@ -43,7 +43,7 @@ Having a mutation detected by sequencing or screening does not necessarily mean 
 
 This script also uses the Excel file (COVID19_VOC_codes_YYYYMMDD.xls) to assign additional information in case of unidentified virus or test types. Similar to the previous script, a .pkl file is also created to track and review new records. Please consider doing manual review of the results to ensure that the text is interpreted accurately. Modifications may be required depending on how the texts of lab results are structured. This file is still a work in progress and will be updated frequently.
 
-The second part of this script rolls up interpretations up to "testing episodes", which we define as each unique combination of patientid and observationdate (i.e., specimen collection date). The script assigns a result for the episode for each test type by taking the latest clear result (P>N>I>D) if there is one. Otherwise, the next latest result is taken.  Please see more details in the **Overview** section. 
+The second part of this script rolls up interpretations up to "testing episodes", which we define as each unique combination of patientid and observationdate (i.e., specimen collection date). The script assigns a result for the episode for each result column by taking the latest clear result (P>N>I>D) if there is one. Otherwise, the next latest result is taken.  Please see more details in the **Overview** section. 
 
 The final output file of the script is a CSV file (.csv) that contains sequencing and screening result for each testing episode. There is additional information included, like a test completed flag for each test type. 
 
