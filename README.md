@@ -103,7 +103,7 @@ Distributed under the GNU Affero General Public License v3.0. See LICENSE for mo
 CONTACT
 -------
 
-Please email Branson Chen [branson.chen@ices.on.ca] for any questions about the COVID19_processing script, Kinwah Fung [kinwah.fung@ices.on.ca] and Hannah Chung [hannah.chung@ices.on.ca] for any questions about the COVID19_rollup script, Sina Brar [sina.brar@ices.on.ca] for any questions about the COVID19_voc_processing script, and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
+Please email Branson Chen [branson.chen@ices.on.ca] for any questions about the COVID19_processing or COVID19_voc_processing scripts, Kinwah Fung [kinwah.fung@ices.on.ca] and Hannah Chung [hannah.chung@ices.on.ca] for any questions about the COVID19_rollup script, and Mahmoud Azimaee [mahmoud.azimaee@ices.on.ca] for any other inquiries.
 
 ACKNOWLEDGEMENTS
 ----------------
