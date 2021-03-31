@@ -34,8 +34,8 @@ The input file for this script is a subset of the SAS dataset used in the COVID 
 
 An intermediate output file of this script is a CSV file (.csv) with an exclude_flag variable (denoting whether the test result was withdrawn) and interpreted results ([P] Positive/[S] preSumptive-positive/[N] Negative/[I] Indeterminate/[D] penDing/[C] Cancelled/[R] Rejected) in multiple columns:
 -	scr_voc: overall screening result, positive if at least one positive mutation result
--	scr_sgene_n501y: screening result of n501y s gene mutation
--	seq_sgene_n501y/k417n/e484k: sequencing result for mutations
+-	scr_sgene_n501y/e484k: screening result for S gene mutations
+-	seq_sgene_n501y/e484k/k417n: sequencing result for S gene mutations
 -	seq_voc: overall sequencing result, positive if at least one positive VOC result
 -	seq_voc_b117/b1351/p1/p2: sequencing result for identified VOCs
 
