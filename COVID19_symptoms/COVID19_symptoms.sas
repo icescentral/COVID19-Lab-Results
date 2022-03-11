@@ -53,7 +53,7 @@ Overview:
 
 options compress=binary;
 /*input the path for the newest cumulative OLIS file*/
-libname infile '//'; 
+libname in '//'; 
 /*input a temporary location to store text_symptoms*/
 libname temp '//'; 
 
@@ -74,7 +74,7 @@ libname temp '//';
 		datepart(observationdatetime) format=date9. as observationdate,
 		upcase(observationvalue) as value, 
 		'observationvalue' as source length=35
-	from infile.&patientnotefile.
+	from in.&patientnotefile.
 	where observationcode = 'XON13543-4';
 	quit;
 
@@ -86,7 +86,7 @@ libname temp '//';
 		datepart(observationdatetime) format=date9. as observationdate,
 		upcase(patientnoteclinicalinformation) as value, 
 		'patientnoteclinicalinformation' as source length=35
-	from infile.&patientnotefile.
+	from in.&patientnotefile.
 	where patientnoteclinicalinformation ^= '';
 	quit;
 
