@@ -7,6 +7,8 @@ This set of scripts were created at ICES (Institute for Clinical Evaluative Scie
 
 USAGE
 -----
+### COVID19_symptoms ###
+Please see the COVID19_symptoms folder for the detailed information.
 
 ### COVID19_processing ###
 
