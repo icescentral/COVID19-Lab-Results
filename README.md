@@ -7,7 +7,7 @@ This set of scripts were created at ICES (Institute for Clinical Evaluative Scie
 
 USAGE
 -----
-### COVID19_processing version after July 7th, 2023###
+### COVID19_processing version after July 7th, 2023
 As the size of the cumulative OLISC19 file gets larger and the processing time keeps going up, some modifications are made to the python code to improve the usage of memories. Instead of running the complete cumulative file at once, now we have implemented a method to process the file in batches. Each batch processes a portion of the dataset, so memories will not be overloaded which avoids potential crashes. Even though the structure of the code is changed, the final output from running the new script does not differ from the previous one. 
 Here are the changes: 
 1.	The new script has a function called “processBatch” to process the file in batches.
@@ -17,6 +17,7 @@ Here are the changes:
 4.	The output comments contain the batch number telling you which batch it is executing.
 5.	After processing is done, run the last two sections to combine the batch outputs into our final output, and lastly to remove the batch outputs
 6.	The result of the code does not change.
+   
 Notes:
 1. This code is targeting SAS or CSV input file. If you have different input file types, you can modify this code and implement your solution. If you want to implement your own solution, you don’t have to comment out “find_current_cutpoint” function definition. Just simply comment out the line “current_batch_cut_index = find_current_cutpoint ( )”, and use “current_batch_cut_index = (batch+1) * batchSize”.
 2. Validation part: you can skip the two cells in "Validation" if you want to implement your own solution. However, if you want to use this script, this part is mandatory to check whether your input file is sorted by ordersid or not.
@@ -28,7 +29,7 @@ Notes:
 ### COVID19_symptoms ###
 Please see the COVID19_symptoms folder for the detailed information.
 
-### COVID19_processing version before July 7th, 2023###
+### COVID19_processing version before July 7th, 2023
 
 The COVID19_processing.ipynb script first cleans the text using some string manipulation and regular expressions, then employs tokenization to split the strings into smaller units (tokens). These tokens are labelled using a dictionary-based approach, in order to act as inputs to our in-house algorithm, which ultimately outputs an interpretation of the COVID-19 lab results. Please see the **Overview** section of this script for a more thorough description.
 
